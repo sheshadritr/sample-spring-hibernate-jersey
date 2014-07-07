@@ -36,6 +36,14 @@ public class TaskRepositoryImpl implements TaskRepository
         List<Task> results = query.getResultList();
         return results;
     }
+    
+    @Override
+    public List<Task> findTasksOfProject(Long taskProjectId) {
+    	// Returns all the tasks in our system inside Project .
+        TypedQuery<Task> query = em.createNamedQuery("SELECT t FROM Task t WHERE t.taskProjectId_projectId = taskProjectId", Task.class);
+        List<Task> results = query.getResultList();
+        return results;
+    }
 
     @Override
     public Task update(Task task, Long taskId)

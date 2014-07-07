@@ -39,7 +39,19 @@ public class TaskResource
         // Handles GET on /tasks. Lists all the tasks we have in our system.
         return taskService.findAll();
     }
+    
+    
+    @GET
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Path("/projectId/{taskProjectId}")
+    public List<Task> list(@PathParam("taskProjectId") Long taskProjectId)
+    {
+        // Handles GET on /tasks/{taskId}. Returns a single task for the given taskId.
+        return taskService.findTasksOfProject(taskProjectId);
+    }
+    
 
+    
     @GET
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @Path("/{taskId}")
@@ -48,6 +60,7 @@ public class TaskResource
         // Handles GET on /tasks/{taskId}. Returns a single task for the given taskId.
         return taskService.find(taskId);
     }
+    
 
     @POST
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

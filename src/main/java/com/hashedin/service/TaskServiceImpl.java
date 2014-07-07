@@ -56,5 +56,13 @@ public class TaskServiceImpl implements TaskService
         // Deletes the task with the give taskId and returns the same.
         return taskRepository.delete(taskId);
     }
+    
+    
+    @Override
+    public List<Task> findTasksOfProject(Long taskProjectId)
+    {
+        // Returns all the tasks in our system.
+        return taskRepository.findTasksOfProject(taskProjectId);
+    }
 
 }
